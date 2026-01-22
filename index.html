@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TRANSFER CHINA — Выкуп товаров из Китая</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-main: #3a0f0f; /* глубокий бордово-красный */
+      --bg-card: rgba(58,15,15,0.75); /* полупрозрачный тёмный красный */
+      --accent: #e63946; /* насыщенный красный для кнопок и заголовков */
+      --accent-2: #ffd700; /* золотой для акцентов */
+      --text-main: #ffffff; /* белый текст */
+      --text-muted: #f4c7b8; /* мягкий золотисто-красный для описаний */
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background: radial-gradient(circle at top, #3a0f0f, #1a0505 60%);
+      color: var(--text-main);
+      overflow-x: hidden;
+      scroll-behavior: smooth; /* плавная прокрутка */
+    }
+
+    /* ====== NAVBAR ====== */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(58,15,15,0.85);
+      backdrop-filter: blur(12px);
+      z-index: 1000;
+      padding: 15px 0;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    }
+
+    .navbar-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .navbar .logo {
+      font-weight: 700;
+      font-size: 22px;
+      color: var(--accent-2); /* золотой */
+    }
+
+    .navbar nav a {
+      color: var(--text-muted);
+      margin-left: 25px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .navbar nav a:hover {
+      color: var(--accent);
+    }
+
+    /* ====== ANIMATIONS ====== */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes glow {
+      0% { box-shadow: 0 0 15px rgba(255,215,0,0.3); }
+      100% { box-shadow: 0 0 35px rgba(255,215,0,0.6); }
+    }
+
+    /* ====== GENERAL ====== */
+    section {
+      padding: 100px 20px;
+      scroll-margin-top: 90px; /* отступ для navbar */
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* ====== HERO ====== */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .hero-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(18px);
+      padding: 60px;
+      border-radius: 28px;
+      animation: fadeUp 1s ease forwards;
+    }
+
+    .hero h1 {
+      font-size: 56px;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 span {
+      color: var(--accent-2);
+    }
+
+    .hero p {
+      font-size: 20px;
+      color: var(--text-muted);
+      margin-bottom: 40px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 16px 32px;
+      border-radius: 16px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 16px;
+      transition: 0.3s;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #000;
+      animation: glow 2s infinite alternate;
+    }
+
+    .btn-secondary {
+      border: 2px solid var(--accent-2);
+      color: var(--text-main);
+    }
+
+    .btn:hover {
+      transform: translateY(-4px) scale(1.03);
+    }
+
+    /* ====== FEATURES ====== */
+    .features h2,
+    .how h2,
+    .pricing h2,
+    .reviews h2,
+    .faq h2 {
+      font-size: 42px;
+      text-align: center;
+      margin-bottom: 60px;
+      color: var(--accent-2);
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
+    }
+
+    .feature-card {
+      background: var(--bg-card);
+      border-radius: 22px;
+      padding: 35px;
+      animation: fadeUp 1s ease forwards;
+      transition: 0.3s;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 30px rgba(255,215,0,0.3);
+    }
+
+    .feature-card h3 {
+      margin-bottom: 15px;
+      font-size: 22px;
+      color: var(--accent-2);
+    }
+
+    .feature-card p {
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* ====== HOW IT WORKS ====== */
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 25px;
+    }
+
+    .step {
+      background: var(--bg-card);
+      padding: 30px;
+      border-radius: 20px;
+    }
+
+    .step span {
+      font-size: 28px;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .step h4 {
+      margin: 15px 0 10px;
+      font-size: 20px;
+      color: var(--accent-2);
+    }
+
+    .step p {
+      color: var(--text-muted);
+    }
+
+    /* ====== REVIEWS ====== */
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .review-card {
+      background: var(--bg-card);
+      border-radius: 22px;
+      padding: 25px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .review-card:hover {
+      transform: translateY(-10px) scale(1.05);
+      box-shadow: 0 10px 30px rgba(255,215,0,0.5);
+    }
+
+    .review-card .avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      margin-bottom: 15px;
+      border: 3px solid var(--accent-2);
+    }
+
+    .review-card .stars {
+      color: var(--accent-2);
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .review-card h3 {
+      margin-bottom: 10px;
+      color: var(--accent-2);
+    }
+
+    .review-card p {
+      color: var(--text-muted);
+      font-size: 15px;
+      line-height: 1.5;
+    }
+
+    /* ====== PRICING ====== */
+    .price-card {
+      max-width: 500px;
+      margin: 0 auto;
+      background: linear-gradient(160deg, rgba(255,215,0,0.15), rgba(227,57,70,0.1));
+      border-radius: 26px;
+      padding: 50px;
+      text-align: center;
+    }
+
+    .price-card h3 {
+      font-size: 32px;
+      margin-bottom: 15px;
+      color: var(--accent-2);
+    }
+
+    .price {
+      font-size: 46px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: var(--accent-2);
+    }
+
+    .price span {
+      font-size: 18px;
+      color: var(--text-muted);
+    }
+
+    /* ====== F.A.Q ====== */
+    .faq-grid {
+      max-width: 800px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .faq-card {
+      background: var(--bg-card);
+      padding: 20px 25px;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: box-shadow 0.3s, transform 0.3s;
+    }
+
+    .faq-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(255,215,0,0.3);
+    }
+
+    .faq-answer {
+      display: none;
+      margin-top: 10px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .faq-card.active .faq-answer {
+      display: block;
+      animation: fadeUp 0.3s ease forwards;
+    }
+
+    .faq-question {
+      font-weight: 600;
+      color: var(--accent-2);
+      transition: color 0.3s;
+    }
+
+    .faq-question:hover {
+      color: var(--accent);
+    }
+
+    /* ====== FOOTER ====== */
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      color: var(--text-muted);
+      border-top: 1px solid rgba(255,215,0,0.08);
+    }
+
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 38px; }
+      .hero-card { padding: 40px 25px; }
+      .navbar nav a { margin-left: 15px; font-size: 14px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="navbar-container">
+      <div class="logo">TRANSFER CHINA</div>
+      <nav>
+        <a href="#features">Почему выбирают нас</a>
+        <a href="#how">Как мы работаем</a>
+        <a href="#reviews">Отзывы</a>
+        <a href="#faq">F.A.Q</a>
+        <a href="#pricing">Стоимость</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-card">
+      <h1><span>TRANSFER</span> CHINA 🇨🇳</h1>
+      <p>Профессиональный выкуп и доставка товаров из Китая под ключ</p>
+      <div class="hero-buttons">
+        <a href="https://t.me/ttrannsffer" class="btn btn-primary" target="_blank">Telegram-канал</a>
+        <a href="https://t.me/Bredov7666" class="btn btn-secondary" target="_blank">Написать менеджеру</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section id="features" class="features">
+    <div class="container">
+      <h2>Почему выбирают нас</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <h3>Быстрая доставка</h3>
+          <p>Средний срок доставки товаров из Китая — 14–18 дней.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Низкая цена</h3>
+          <p>Стоимость доставки от 7$ за 1 кг без скрытых платежей.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Полное сопровождение</h3>
+          <p>Помогаем на всех этапах: от выбора товара до получения.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Проверенные площадки</h3>
+          <p>Работаем с Taobao, 1688, WeChat и другими магазинами.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section id="how" class="how">
+    <div class="container">
+      <h2>Как мы работаем</h2>
+      <div class="steps">
+        <div class="step">
+          <span>01</span>
+          <h4>Вы присылаете товар</h4>
+          <p>Отправляете ссылку или фото нужного товара.</p>
+        </div>
+        <div class="step">
+          <span>02</span>
+          <h4>Мы выкупаем</h4>
+          <p>Проверяем продавца и совершаем покупку.</p>
+        </div>
+        <div class="step">
+          <span>03</span>
+          <h4>Доставка</h4>
+          <p>Отправляем товар и отслеживаем путь.</p>
+        </div>
+        <div class="step">
+          <span>04</span>
+          <h4>Получение</h4>
+          <p>Вы получаете заказ в своём городе.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section id="reviews" class="reviews">
+    <div class="container">
+      <h2>Отзывы клиентов</h2>
+      <div class="reviews-grid">
+        <div class="review-card">
+          <img src="https://i.imgur.com/sqZkWvt.png" alt="Алексей" class="avatar">
+          <h3>Тимур</h3>
+          <div class="stars">⭐⭐⭐⭐⭐</div>
+          <p>Спасибо дяде Максиму за шмотки, все приехало не обманул. Всегда был на связи и консультировал по любым вопросам.</p>
+        </div>
+        <div class="review-card">
+          <img src="https://i.imgur.com/Mv0Yahw.png" alt="Марина" class="avatar">
+          <h3>Елизавета</h3>
+          <div class="stars">⭐⭐⭐⭐⭐</div>
+          <p>Товар в идеальном состоянии, все на своих местах. Максим подробно объяснил и быстро отправил. Довольна на все 100.</p>
+        </div>
+        <div class="review-card">
+          <img src="https://avatars.mds.yandex.net/i?id=a488a893bf7fa0172cd8187814ee5e3d196afef4-4272095-images-thumbs&n=13" alt="Илья" class="avatar">
+          <h3>Влад</h3>
+          <div class="stars">⭐⭐⭐⭐</div>
+          <p>Дешево, по качеству нормас, заказал легко быстро, только долго ехало.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- F.A.Q -->
+  <section id="faq" class="faq">
+    <div class="container">
+      <h2>F.A.Q — Часто задаваемые вопросы</h2>
+      <div class="faq-grid">
+        <div class="faq-card">
+          <h4 class="faq-question">Сколько времени занимает доставка из Китая?</h4>
+          <p class="faq-answer">Средний срок доставки — 14–18 дней, в зависимости от способа и региона. Но мы не гарантируем точные сроки доставки. В процессе доставки возможны задержки, связанные с логистикой, погодными условиями или работой транспортных служб. В таких случаях переживать не стоит — товар обязательно будет доставлен, задержка носит временный характер и зависит исключительно от логистических факторов</p>
+        </div>
+        <div class="faq-card">
+          <h4 class="faq-question">Что делать если мне не подошел размер?</h4>
+          <p class="faq-answer">Мы не несем ответственности за выбор размера и не предоставляем услугу обмена или возврата денежных средств, если выбранный размер вам не подошёл. Пожалуйста, внимательно выбирайте размер перед оформлением заказа. Рекомендуем брать размер больше, если вы сомневаетесь, чтобы избежать возможных проблем с товаром в будущем.</p>
+        </div>
+        <div class="faq-card">
+          <h4 class="faq-question">Можно ли выкупить товар с нескольких площадок сразу?</h4>
+          <p class="faq-answer">Да, мы можем оформить заказ с нескольких сайтов и собрать всё в одной посылке.</p>
+        </div>
+		<div class="faq-card">
+          <h4 class="faq-question">Предоставят ли мне трек-номер для отслеживания посылки?</h4>
+          <p class="faq-answer">Нет, мы не предоставляем трек-номер для отслеживания посылки т.к мы не являемся курьерской службой и не имеем прямой связи с перевозчиками. Наша задача — выкуп товара и оформление доставки до вашего города.</p>
+        </div>
+        <div class="faq-card">
+          <h4 class="faq-question">Как я могу отслеживать заказ?</h4>
+          <p class="faq-answer">Только спросив у менеджера</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section id="pricing" class="pricing">
+    <div class="container">
+      <h2>Стоимость</h2>
+      <div class="price-card">
+        <h3>Доставка из Китая</h3>
+        <div class="price">7$ <span>/ кг</span></div>
+        <p>Финальная стоимость рассчитывается индивидуально</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    © 2026 TRANSFER CHINA — Выкуп и доставка товаров из Китая
+  </footer>
+
+  <!-- ===== JS ===== -->
+  <script>
+    // Плавный скролл
+    const navLinks = document.querySelectorAll('.navbar nav a');
+    navLinks.forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href').substring(1);
+        const targetSection = document.getElementById(targetId);
+        targetSection.scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+
+    // Аккордеон для F.A.Q
+    const faqQuestions = document.querySelectorAll('.faq-question');
+    faqQuestions.forEach(question => {
+      question.addEventListener('click', () => {
+        const parentCard = question.parentElement;
+        parentCard.classList.toggle('active'); // можно открыть несколько одновременно
+      });
+    });
+  </script>
+
+</body>
+</html>
