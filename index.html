@@ -5,17 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>TRANSFER — Выкуп товаров из Китая</title>
 
-  <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --bg-main: #3a0f0f; /* глубокий бордово-красный */
-      --bg-card: rgba(58,15,15,0.75); /* полупрозрачный тёмный красный */
-      --accent: #e63946; /* насыщенный красный для кнопок и заголовков */
-      --accent-2: #ffd700; /* золотой для акцентов */
-      --text-main: #ffffff; /* белый текст */
-      --text-muted: #f4c7b8; /* мягкий золотисто-красный для описаний */
+      --bg-main: #3a0f0f;
+      --bg-card: rgba(58,15,15,0.75);
+      --accent: #e63946;
+      --accent-2: #ffd700;
+      --text-main: #ffffff;
+      --text-muted: #f4c7b8;
     }
 
     * {
@@ -29,10 +28,9 @@
       background: radial-gradient(circle at top, #3a0f0f, #1a0505 60%);
       color: var(--text-main);
       overflow-x: hidden;
-      scroll-behavior: smooth; /* плавная прокрутка */
+      scroll-behavior: smooth;
     }
 
-    /* ====== NAVBAR ====== */
     .navbar {
       position: fixed;
       top: 0;
@@ -57,7 +55,7 @@
     .navbar .logo {
       font-weight: 700;
       font-size: 22px;
-      color: var(--accent-2); /* золотой */
+      color: var(--accent-2);
     }
 
     .navbar nav a {
@@ -72,7 +70,6 @@
       color: var(--accent);
     }
 
-    /* ====== ANIMATIONS ====== */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(40px); }
       to { opacity: 1; transform: translateY(0); }
@@ -83,10 +80,9 @@
       100% { box-shadow: 0 0 35px rgba(255,215,0,0.6); }
     }
 
-    /* ====== GENERAL ====== */
     section {
       padding: 100px 20px;
-      scroll-margin-top: 90px; /* отступ для navbar */
+      scroll-margin-top: 90px;
     }
 
     .container {
@@ -94,7 +90,6 @@
       margin: 0 auto;
     }
 
-    /* ====== HERO ====== */
     .hero {
       min-height: 100vh;
       display: flex;
@@ -157,7 +152,6 @@
       transform: translateY(-4px) scale(1.03);
     }
 
-    /* ====== FEATURES ====== */
     .features h2,
     .how h2,
     .pricing h2,
@@ -199,7 +193,6 @@
       line-height: 1.6;
     }
 
-    /* ====== HOW IT WORKS ====== */
     .steps {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -228,7 +221,6 @@
       color: var(--text-muted);
     }
 
-    /* ====== REVIEWS ====== */
     .reviews-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -273,7 +265,6 @@
       line-height: 1.5;
     }
 
-    /* ====== PRICING ====== */
     .price-card {
       max-width: 500px;
       margin: 0 auto;
@@ -301,7 +292,6 @@
       color: var(--text-muted);
     }
 
-    /* ====== F.A.Q ====== */
     .faq-grid {
       max-width: 800px;
       margin: 0 auto;
@@ -345,7 +335,6 @@
       color: var(--accent);
     }
 
-    /* ====== FOOTER ====== */
     footer {
       text-align: center;
       padding: 40px 20px;
@@ -362,7 +351,6 @@
 </head>
 <body>
 
-  <!-- NAVBAR -->
   <header class="navbar">
     <div class="navbar-container">
       <div class="logo">TRANSFER</div>
@@ -376,7 +364,6 @@
     </div>
   </header>
 
-  <!-- HERO -->
   <section class="hero">
     <div class="hero-card">
       <h1><span>TRANSFER</span></h1>
@@ -388,7 +375,6 @@
     </div>
   </section>
 
-  <!-- FEATURES -->
   <section id="features" class="features">
     <div class="container">
       <h2>Почему выбирают нас</h2>
@@ -413,7 +399,6 @@
     </div>
   </section>
 
-  <!-- HOW IT WORKS -->
   <section id="how" class="how">
     <div class="container">
       <h2>Как мы работаем</h2>
@@ -442,7 +427,6 @@
     </div>
   </section>
 
-  <!-- REVIEWS -->
   <section id="reviews" class="reviews">
     <div class="container">
       <h2>Отзывы клиентов</h2>
@@ -475,7 +459,6 @@
     </div>
   </section>
 
-  <!-- F.A.Q -->
   <section id="faq" class="faq">
     <div class="container">
       <h2>F.A.Q — Часто задаваемые вопросы</h2>
@@ -504,13 +487,12 @@
     </div>
   </section>
 
-  <!-- PRICING -->
   <section id="pricing" class="pricing">
     <div class="container">
       <h2>Стоимость</h2>
       <div class="price-card">
         <h3>Доставка из Китая</h3>
-        <div class="price">7$ <span>/ кг</span></div>
+        <div class="price">7.5$ <span>/ кг</span></div>
         <p>Финальная стоимость рассчитывается индивидуально</p>
       </div>
     </div>
@@ -520,9 +502,7 @@
     © 2026 TRANSFER CHINA — Выкуп и доставка товаров из Китая
   </footer>
 
-  <!-- ===== JS ===== -->
   <script>
-    // Плавный скролл
     const navLinks = document.querySelectorAll('.navbar nav a');
     navLinks.forEach(link => {
       link.addEventListener('click', function(e) {
@@ -533,12 +513,11 @@
       });
     });
 
-    // Аккордеон для F.A.Q
     const faqQuestions = document.querySelectorAll('.faq-question');
     faqQuestions.forEach(question => {
       question.addEventListener('click', () => {
         const parentCard = question.parentElement;
-        parentCard.classList.toggle('active'); // можно открыть несколько одновременно
+        parentCard.classList.toggle('active');
       });
     });
   </script>
