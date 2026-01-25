@@ -3,354 +3,295 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TRANSFER — Выкуп товаров из Китая</title>
+  <title>TRANSFER CHINA — Выкуп товаров из Китая</title>
 
+  <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <style>
-    :root {
-      --bg-main: #3a0f0f;
-      --bg-card: rgba(58,15,15,0.75);
-      --accent: #e63946;
-      --accent-2: #ffd700;
-      --text-main: #ffffff;
-      --text-muted: #f4c7b8;
-    }
+	<style>
+	:root {
+	  --bg-main: #070b14;
+	  --bg-gradient: radial-gradient(circle at top, #0f172a, #020617 70%);
+	  --card-bg: rgba(15, 23, 42, 0.75);
+	  --card-border: rgba(148, 163, 184, 0.08);
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Inter', sans-serif;
-    }
+	  --accent: #7c7cff;
+	  --accent-soft: #6366f1;
+	  --text-main: #f8fafc;
+	  --text-muted: #94a3b8;
+	}
 
-    body {
-      background: radial-gradient(circle at top, #3a0f0f, #1a0505 60%);
-      color: var(--text-main);
-      overflow-x: hidden;
-      scroll-behavior: smooth;
-    }
+	* {
+	  margin: 0;
+	  padding: 0;
+	  box-sizing: border-box;
+	  font-family: 'Inter', sans-serif;
+	}
 
-    .navbar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      background: rgba(58,15,15,0.85);
-      backdrop-filter: blur(12px);
-      z-index: 1000;
-      padding: 15px 0;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.5);
-    }
+	body {
+	  background: var(--bg-gradient);
+	  color: var(--text-main);
+	  overflow-x: hidden;
+	}
 
-    .navbar-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
+	/* ===== NAVBAR ===== */
+	.navbar {
+	  position: fixed;
+	  top: 0;
+	  width: 100%;
+	  background: rgba(2, 6, 23, 0.6);
+	  backdrop-filter: blur(14px);
+	  border-bottom: 1px solid var(--card-border);
+	  z-index: 1000;
+	}
 
-    .navbar .logo {
-      font-weight: 700;
-      font-size: 22px;
-      color: var(--accent-2);
-    }
+	.navbar-container {
+	  max-width: 1200px;
+	  margin: auto;
+	  padding: 18px 24px;
+	  display: flex;
+	  justify-content: space-between;
+	  align-items: center;
+	}
 
-    .navbar nav a {
-      color: var(--text-muted);
-      margin-left: 25px;
-      text-decoration: none;
-      font-weight: 500;
-      transition: color 0.3s;
-    }
+	.logo {
+	  font-weight: 700;
+	  font-size: 20px;
+	  color: var(--accent);
+	}
 
-    .navbar nav a:hover {
-      color: var(--accent);
-    }
+	.navbar nav a {
+	  color: var(--text-muted);
+	  margin-left: 24px;
+	  text-decoration: none;
+	  transition: 0.3s;
+	}
 
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(40px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+	.navbar nav a:hover {
+	  color: var(--accent);
+	}
 
-    @keyframes glow {
-      0% { box-shadow: 0 0 15px rgba(255,215,0,0.3); }
-      100% { box-shadow: 0 0 35px rgba(255,215,0,0.6); }
-    }
+	/* ===== SECTIONS ===== */
+	section {
+	  padding: 120px 20px;
+	}
 
-    section {
-      padding: 100px 20px;
-      scroll-margin-top: 90px;
-    }
+	.container {
+	  max-width: 1200px;
+	  margin: auto;
+	}
 
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
+	/* ===== HERO ===== */
+	.hero {
+	  min-height: 100vh;
+	  display: flex;
+	  align-items: center;
+	  justify-content: center;
+	}
 
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-    }
+	.hero-card {
+	  background: var(--card-bg);
+	  border: 1px solid var(--card-border);
+	  backdrop-filter: blur(20px);
+	  padding: 70px 60px;
+	  border-radius: 26px;
+	  text-align: center;
+	  box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+	}
 
-    .hero-card {
-      background: var(--bg-card);
-      backdrop-filter: blur(18px);
-      padding: 60px;
-      border-radius: 28px;
-      animation: fadeUp 1s ease forwards;
-    }
+	.hero h1 {
+	  font-size: 52px;
+	  margin-bottom: 18px;
+	}
 
-    .hero h1 {
-      font-size: 56px;
-      margin-bottom: 20px;
-    }
+	.hero h1 span {
+	  color: var(--accent);
+	}
 
-    .hero h1 span {
-      color: var(--accent-2);
-    }
+	.hero p {
+	  font-size: 18px;
+	  color: var(--text-muted);
+	  margin-bottom: 40px;
+	}
 
-    .hero p {
-      font-size: 20px;
-      color: var(--text-muted);
-      margin-bottom: 40px;
-    }
+	.hero-buttons {
+	  display: flex;
+	  justify-content: center;
+	  gap: 18px;
+	  flex-wrap: wrap;
+	}
 
-    .hero-buttons {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
+	.btn {
+	  padding: 15px 34px;
+	  border-radius: 14px;
+	  font-weight: 600;
+	  text-decoration: none;
+	  transition: 0.3s;
+	}
 
-    .btn {
-      padding: 16px 32px;
-      border-radius: 16px;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 16px;
-      transition: 0.3s;
-    }
+	.btn-primary {
+	  background: linear-gradient(135deg, var(--accent), var(--accent-soft));
+	  color: #fff;
+	  box-shadow: 0 0 35px rgba(124,124,255,0.45);
+	}
 
-    .btn-primary {
-      background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      color: #000;
-      animation: glow 2s infinite alternate;
-    }
+	.btn-secondary {
+	  border: 1px solid var(--card-border);
+	  color: var(--text-main);
+	}
 
-    .btn-secondary {
-      border: 2px solid var(--accent-2);
-      color: var(--text-main);
-    }
+	.btn:hover {
+	  transform: translateY(-3px);
+	  box-shadow: 0 10px 40px rgba(124,124,255,0.4);
+	}
 
-    .btn:hover {
-      transform: translateY(-4px) scale(1.03);
-    }
+	/* ===== HEADINGS ===== */
+	.features h2,
+	.how h2,
+	.reviews h2,
+	.pricing h2,
+	.faq h2 {
+	  text-align: center;
+	  font-size: 40px;
+	  margin-bottom: 60px;
+	}
 
-    .features h2,
-    .how h2,
-    .pricing h2,
-    .reviews h2,
-    .faq h2 {
-      font-size: 42px;
-      text-align: center;
-      margin-bottom: 60px;
-      color: var(--accent-2);
-    }
+	/* ===== CARDS ===== */
+	.feature-card,
+	.step,
+	.review-card,
+	.faq-card,
+	.price-card {
+	  background: var(--card-bg);
+	  border: 1px solid var(--card-border);
+	  backdrop-filter: blur(18px);
+	  border-radius: 22px;
+	  transition: 0.35s;
+	}
 
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 30px;
-    }
+	.feature-card:hover,
+	.review-card:hover,
+	.faq-card:hover {
+	  transform: translateY(-8px);
+	  box-shadow: 0 15px 45px rgba(0,0,0,0.5);
+	}
 
-    .feature-card {
-      background: var(--bg-card);
-      border-radius: 22px;
-      padding: 35px;
-      animation: fadeUp 1s ease forwards;
-      transition: 0.3s;
-    }
+	/* ===== FEATURES ===== */
+	.features-grid {
+	  display: grid;
+	  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+	  gap: 30px;
+	}
 
-    .feature-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 10px 30px rgba(255,215,0,0.3);
-    }
+	.feature-card {
+	  padding: 34px;
+	}
 
-    .feature-card h3 {
-      margin-bottom: 15px;
-      font-size: 22px;
-      color: var(--accent-2);
-    }
+	.feature-card h3 {
+	  margin-bottom: 14px;
+	  color: var(--accent);
+	}
 
-    .feature-card p {
-      color: var(--text-muted);
-      line-height: 1.6;
-    }
+	.feature-card p {
+	  color: var(--text-muted);
+	}
 
-    .steps {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 25px;
-    }
+	/* ===== HOW ===== */
+	.steps {
+	  display: grid;
+	  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+	  gap: 24px;
+	}
 
-    .step {
-      background: var(--bg-card);
-      padding: 30px;
-      border-radius: 20px;
-    }
+	.step {
+	  padding: 32px;
+	}
 
-    .step span {
-      font-size: 28px;
-      color: var(--accent);
-      font-weight: 700;
-    }
+	.step span {
+	  font-size: 28px;
+	  color: var(--accent);
+	  font-weight: 700;
+	}
 
-    .step h4 {
-      margin: 15px 0 10px;
-      font-size: 20px;
-      color: var(--accent-2);
-    }
+	/* ===== REVIEWS ===== */
+	.reviews-grid {
+	  display: grid;
+	  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+	  gap: 24px;
+	}
 
-    .step p {
-      color: var(--text-muted);
-    }
+	.review-card {
+	  padding: 28px;
+	  text-align: center;
+	}
 
-    .reviews-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 20px;
-    }
+	.review-card .avatar {
+	  width: 80px;
+	  height: 80px;
+	  border-radius: 50%;
+	  border: 3px solid var(--accent);
+	  margin-bottom: 14px;
+	}
 
-    .review-card {
-      background: var(--bg-card);
-      border-radius: 22px;
-      padding: 25px;
-      text-align: center;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
+	.review-card .stars {
+	  color: var(--accent);
+	}
 
-    .review-card:hover {
-      transform: translateY(-10px) scale(1.05);
-      box-shadow: 0 10px 30px rgba(255,215,0,0.5);
-    }
+	/* ===== PRICING ===== */
+	.price-card {
+	  max-width: 460px;
+	  margin: auto;
+	  padding: 55px;
+	  text-align: center;
+	}
 
-    .review-card .avatar {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      margin-bottom: 15px;
-      border: 3px solid var(--accent-2);
-    }
+	.price {
+	  font-size: 46px;
+	  color: var(--accent);
+	}
 
-    .review-card .stars {
-      color: var(--accent-2);
-      font-size: 18px;
-      margin-bottom: 10px;
-    }
+	/* ===== FAQ ===== */
+	.faq-grid {
+	  max-width: 820px;
+	  margin: auto;
+	  display: flex;
+	  flex-direction: column;
+	  gap: 18px;
+	}
 
-    .review-card h3 {
-      margin-bottom: 10px;
-      color: var(--accent-2);
-    }
+	.faq-card {
+	  padding: 22px 26px;
+	  cursor: pointer;
+	}
 
-    .review-card p {
-      color: var(--text-muted);
-      font-size: 15px;
-      line-height: 1.5;
-    }
+	.faq-answer {
+	  display: none;
+	  margin-top: 10px;
+	  color: var(--text-muted);
+	}
 
-    .price-card {
-      max-width: 500px;
-      margin: 0 auto;
-      background: linear-gradient(160deg, rgba(255,215,0,0.15), rgba(227,57,70,0.1));
-      border-radius: 26px;
-      padding: 50px;
-      text-align: center;
-    }
+	.faq-card.active .faq-answer {
+	  display: block;
+	}
 
-    .price-card h3 {
-      font-size: 32px;
-      margin-bottom: 15px;
-      color: var(--accent-2);
-    }
+	/* ===== FOOTER ===== */
+	footer {
+	  text-align: center;
+	  padding: 40px 20px;
+	  color: var(--text-muted);
+	  border-top: 1px solid var(--card-border);
+	}
 
-    .price {
-      font-size: 46px;
-      font-weight: 700;
-      margin-bottom: 10px;
-      color: var(--accent-2);
-    }
-
-    .price span {
-      font-size: 18px;
-      color: var(--text-muted);
-    }
-
-    .faq-grid {
-      max-width: 800px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-
-    .faq-card {
-      background: var(--bg-card);
-      padding: 20px 25px;
-      border-radius: 20px;
-      cursor: pointer;
-      transition: box-shadow 0.3s, transform 0.3s;
-    }
-
-    .faq-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 25px rgba(255,215,0,0.3);
-    }
-
-    .faq-answer {
-      display: none;
-      margin-top: 10px;
-      color: var(--text-muted);
-      line-height: 1.6;
-    }
-
-    .faq-card.active .faq-answer {
-      display: block;
-      animation: fadeUp 0.3s ease forwards;
-    }
-
-    .faq-question {
-      font-weight: 600;
-      color: var(--accent-2);
-      transition: color 0.3s;
-    }
-
-    .faq-question:hover {
-      color: var(--accent);
-    }
-
-    footer {
-      text-align: center;
-      padding: 40px 20px;
-      color: var(--text-muted);
-      border-top: 1px solid rgba(255,215,0,0.08);
-    }
-
-    @media (max-width: 600px) {
-      .hero h1 { font-size: 38px; }
-      .hero-card { padding: 40px 25px; }
-      .navbar nav a { margin-left: 15px; font-size: 14px; }
-    }
-  </style>
+	/* ===== MOBILE ===== */
+	@media (max-width: 600px) {
+	  .hero h1 { font-size: 36px; }
+	  .hero-card { padding: 45px 28px; }
+	}
+	</style>
 </head>
 <body>
 
+  <!-- NAVBAR -->
   <header class="navbar">
     <div class="navbar-container">
       <div class="logo">TRANSFER</div>
@@ -364,6 +305,7 @@
     </div>
   </header>
 
+  <!-- HERO -->
   <section class="hero">
     <div class="hero-card">
       <h1><span>TRANSFER</span></h1>
@@ -375,6 +317,7 @@
     </div>
   </section>
 
+  <!-- FEATURES -->
   <section id="features" class="features">
     <div class="container">
       <h2>Почему выбирают нас</h2>
@@ -393,12 +336,13 @@
         </div>
         <div class="feature-card">
           <h3>Проверенные площадки</h3>
-          <p>Работаем с Taobao, Pinduoduo, Poizon и другими магазинами.</p>
+          <p>Работаем с Taobao, 1688, WeChat и другими магазинами.</p>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- HOW IT WORKS -->
   <section id="how" class="how">
     <div class="container">
       <h2>Как мы работаем</h2>
@@ -427,24 +371,25 @@
     </div>
   </section>
 
+  <!-- REVIEWS -->
   <section id="reviews" class="reviews">
     <div class="container">
       <h2>Отзывы клиентов</h2>
       <div class="reviews-grid">
         <div class="review-card">
-          <img src="https://i.imgur.com/sqZkWvt.png" alt="Алексей" class="avatar">
+          <img src="https://i.imgur.com/sqZkWvt.png" alt="Тимур" class="avatar">
           <h3>Тимур</h3>
           <div class="stars">⭐⭐⭐⭐⭐</div>
-          <p>Спасибо за шмотки, все приехало не обманул. Всегда был на связи и консультировал по любым вопросам.</p>
+          <p>Спасибо за шмотки, все приехало не обманули. Всегда были на связи и консультировали по любым вопросам.</p>
         </div>
         <div class="review-card">
-          <img src="https://i.imgur.com/Mv0Yahw.png" alt="Марина" class="avatar">
+          <img src="https://i.imgur.com/Mv0Yahw.png" alt="Елизавета" class="avatar">
           <h3>Елизавета</h3>
           <div class="stars">⭐⭐⭐⭐⭐</div>
           <p>Товар в идеальном состоянии, все на своих местах. Максим подробно объяснил и быстро отправил. Довольна на все 100.</p>
         </div>
         <div class="review-card">
-          <img src="https://avatars.mds.yandex.net/i?id=a488a893bf7fa0172cd8187814ee5e3d196afef4-4272095-images-thumbs&n=13" alt="Илья" class="avatar">
+          <img src="https://avatars.mds.yandex.net/i?id=a488a893bf7fa0172cd8187814ee5e3d196afef4-4272095-images-thumbs&n=13" alt="Влад" class="avatar">
           <h3>Влад</h3>
           <div class="stars">⭐⭐⭐⭐</div>
           <p>Дешево, по качеству нормас, заказал легко быстро, только долго ехало.</p>
@@ -459,6 +404,7 @@
     </div>
   </section>
 
+  <!-- F.A.Q -->
   <section id="faq" class="faq">
     <div class="container">
       <h2>F.A.Q — Часто задаваемые вопросы</h2>
@@ -499,7 +445,7 @@
   </section>
 
   <footer>
-    © 2026 TRANSFER CHINA — Выкуп и доставка товаров из Китая
+    © 2026 TRANSFER — Выкуп и доставка товаров из Китая
   </footer>
 
   <script>
@@ -517,7 +463,7 @@
     faqQuestions.forEach(question => {
       question.addEventListener('click', () => {
         const parentCard = question.parentElement;
-        parentCard.classList.toggle('active');
+        parentCard.classList.toggle('active'); 
       });
     });
   </script>
